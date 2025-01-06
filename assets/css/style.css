@@ -1318,9 +1318,9 @@
 
 
 
-.robot {
+.balloon {
     position: absolute !important;
-    bottom: 0;
+    top: 0;
     width: 100%;
     z-index: 3;
     mix-blend-mode: exclusion;
