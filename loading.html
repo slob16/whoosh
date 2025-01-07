@@ -4,41 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loading...</title>
+  
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="test.css">
+  
+  <!-- Script for balloon floating animation -->
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      overflow: hidden;
+      background-color: #f0f0f0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      background-color: #050505;
-      text-align: center;
+      position: relative;
     }
+
     .loading-container {
-      border: 2px solid #d8f744;
-      padding: 30px;
-      background-color: #050505;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      bottom: 50px;
+      text-align: center;
+      z-index: 10;
     }
-    h1 {
-      font-size: 36px;
-      color: #faf9f6;
-    }
-    p {
-      font-size: 18px;
-      color: #050505;
-    }
+
     .enter-msg {
       margin-top: 20px;
       font-size: 18px;
       font-weight: bold;
-      color: #faf9f6;
+      color: #333;
+    }
+
+    /* Floating balloons animation */
+    .balloon {
+      position: absolute;
+      bottom: -100px; /* Start position off-screen */
+      width: 80px;
+      height: 120px;
+      background-color: #FF5733; /* Example balloon color */
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      animation: floatUp 6s infinite ease-in-out;
+    }
+
+    .balloon:nth-child(1) {
+      background-color: #FF5733; /* Red balloon */
+      animation-duration: 8s;
+      animation-delay: 0s;
+    }
+
+    .balloon:nth-child(2) {
+      background-color: #33FF57; /* Green balloon */
+      animation-duration: 10s;
+      animation-delay: 2s;
+    }
+
+    .balloon:nth-child(3) {
+      background-color: #3357FF; /* Blue balloon */
+      animation-duration: 7s;
+      animation-delay: 4s;
+    }
+
+    /* Float Up Keyframe */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0); /* Start at the bottom */
+      }
+      100% {
+        transform: translateY(-100vh); /* Move to the top */
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Floating Balloons -->
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
 
   <div class="loading-container">
     <h1>Loading...</h1>
@@ -46,18 +90,17 @@
     <div class="enter-msg">Press Enter to continue</div>
   </div>
 
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+
+  <!-- Enter key functionality -->
   <script>
-    
-    // Listen for the Enter key press to redirect to index.html
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
         window.location.href = 'index.html'; // Redirect to the main page
       }
-        setTimeout(function() {
-  window.location.href = 'index.html'; // Redirect to the main page after 10 seconds
-}, 10000); // 10 seconds
     });
   </script>
-  
+
 </body>
 </html>
