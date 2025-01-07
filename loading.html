@@ -12,29 +12,29 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      background-color: #f0f0f0;
+      background-color: #050505;
       text-align: center;
     }
     .loading-container {
-      border: 2px solid #ccc;
+      border: 2px solid #d8f744;
       padding: 30px;
-      background-color: #fff;
+      background-color: #050505;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     h1 {
       font-size: 36px;
-      color: #333;
+      color: #faf9f6;
     }
     p {
       font-size: 18px;
-      color: #555;
+      color: #050505;
     }
     .enter-msg {
       margin-top: 20px;
       font-size: 18px;
       font-weight: bold;
-      color: #333;
+      color: #faf9f6;
     }
   </style>
 </head>
@@ -47,11 +47,15 @@
   </div>
 
   <script>
+    
     // Listen for the Enter key press to redirect to index.html
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
         window.location.href = 'index.html'; // Redirect to the main page
       }
+        setTimeout(function() {
+  window.location.href = 'index.html'; // Redirect to the main page after 10 seconds
+}, 10000); // 10 seconds
     });
   </script>
   
