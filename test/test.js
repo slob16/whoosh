@@ -1,43 +1,47 @@
-// Basic Three.js scene setup
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('3d-container').appendChild(renderer.domElement);
 
-// Add a basic light to the scene
-var light = new THREE.PointLight(0xFFFFFF, 1, 1000);
-light.position.set(50, 50, 50);
-scene.add(light);
+// for a version that rotates things too, see https://codepen.io/GreenSock/pen/gOvQYrZ?editors=0010
 
-// Load the OBJ model and apply texture
-var loader = new THREE.OBJLoader();
-var textureLoader = new THREE.TextureLoader();
+gsap.registerPlugin(ScrollTrigger);
 
-// Path to your texture file (JPG)
-var texture = textureLoader.load('assets/images/test/hab.jpg'); // Ensure correct path
+let limit = {max: 100, pullRatio: 0},
+    getRandom = () => gsap.utils.random(-limit.max, limit.max),
+    round = value => Math.round(value * 10000) / 10000,
+    getModifier = home => value => {
+      value = parseFloat(value);
+      return round(value + (home - value) * limit.pullRatio) + "px";
+    };
 
-// Load your OBJ model
-loader.load('assets/images/test/balloon.obj', function (obj) {
-  obj.traverse(function (child) {
-    if (child.isMesh) {
-      child.material.map = texture; // Apply texture to the 3D model
-    }
-  });
-  scene.add(obj);
+gsap.utils.toArray(".box").forEach((element) => {
+  wander(element, gsap.getProperty(element, "x"), gsap.getProperty(element, "y"))
 });
 
-// Set camera position
-camera.position.z = 5;
-
-// Animation function for rendering the scene and rotating the model
-function animate() {
-  requestAnimationFrame(animate);
-  renderer.render(scene, camera);
-
-  // Optionally add rotation to the scene or model
-  scene.rotation.y += 0.01; // Rotate the entire scene for effect
+function wander(element, homeX, homeY) {
+  gsap.set(element, {
+    x: homeX + (gsap.getProperty(element, "x") - homeX) / (1 - limit.pullRatio),
+    y: homeY + (gsap.getProperty(element, "y") - homeY) / (1 - limit.pullRatio)
+  })
+  gsap.to(element, {
+    x: homeX + getRandom(),
+    y: homeY + getRandom(),
+    modifiers: {
+      x: getModifier(homeX),
+      y: getModifier(homeY)
+    },
+    duration: gsap.utils.random(1.5, 4), 
+    ease: "sine.inOut",
+    onComplete: () => wander(element, homeX, homeY)
+  });
 }
 
-// Start the animation loop
-animate();
+// pull toward "home" position more and more as you scroll down
+gsap.to(limit, {
+  pullRatio: 1,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".balloon",
+    pin: true,
+    start: 0,
+    end: "max",
+    scrub: true
+  }
+})
