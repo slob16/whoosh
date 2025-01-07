@@ -22,6 +22,16 @@
     return balloon;
   }
 
+// script.js
+
+// Listen for the Enter key press to redirect to index.html
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    window.location.href = 'index.html'; // Redirect to the main page
+  }
+});
+
+
 setTimeout(function() {
   window.location.href = 'index.html'; // Redirect to the main page after 10 seconds
 }, 10000); // 10 seconds
