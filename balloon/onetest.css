@@ -1,31 +1,4 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  overflow: hidden;
-  background-color: #050505;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: relative;
-}
-
-/* Loading Screen Container */
-.loading-container {
-  position: absolute;
-  bottom: 50px;
-  text-align: center;
-  z-index: 10;
-}
-
-.enter-msg {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #d8f744;
-}
-
-body {
   background-color: #050505;  
 }
 
@@ -100,7 +73,7 @@ svg {
       animation: cloud 10s infinite linear;
       
       path {
-        fill: black;
+        fill: faf9f6;
       }
     }
   }
