@@ -1,59 +1,78 @@
-/* General Styling */
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Prevent scrollbars */
-}
+/* styles.css */
 
-.banner-one {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
+/* Add any general styles or customizations for the loading page here */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  overflow: hidden;
+  background-color: #f0f0f0;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.auto-container {
+  height: 100vh;
   position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
 }
 
-/* Balloon Styling */
+.loading-container {
+  position: absolute;
+  bottom: 50px;
+  text-align: center;
+  z-index: 10;
+}
+
+h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+p {
+  font-size: 18px;
+  color: #555;
+}
+
+.enter-msg {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Balloon Floating animation */
 .balloon {
   position: absolute;
-  width: 100px; /* Size of the balloon */
-  height: 150px;
-  background: url('path-to-your-hot-air-balloon-image.png') no-repeat center;
-  background-size: contain;
-  animation: float-up linear infinite;
+  bottom: -100px; /* Start position off-screen */
+  width: 80px;
+  height: 120px;
+  background-color: #FF5733; /* Example balloon color */
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  animation: floatUp 6s infinite ease-in-out;
 }
 
-#threejs-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-canvas {
-  display: block;
+.balloon:nth-child(1) {
+  background-color: #FF5733; /* Red balloon */
+  animation-duration: 8s;
+  animation-delay: 0s;
 }
 
-/* Float Up Animation */
-@keyframes float-up {
+.balloon:nth-child(2) {
+  background-color: #33FF57; /* Green balloon */
+  animation-duration: 10s;
+  animation-delay: 2s;
+}
+
+.balloon:nth-child(3) {
+  background-color: #3357FF; /* Blue balloon */
+  animation-duration: 7s;
+  animation-delay: 4s;
+}
+
+/* Float Up Keyframe */
+@keyframes floatUp {
   0% {
-    transform: translateY(100vh); /* Start off-screen */
-    opacity: 0; /* Fade in */
-  }
-  10% {
-    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Start at the bottom */
   }
   100% {
-    transform: translateY(-200px); /* End off-screen */
-    opacity: 0; /* Fade out */
+    transform: translateY(-100vh); /* Move to the top */
   }
 }
