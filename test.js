@@ -21,6 +21,11 @@
     return balloon;
   }
 
+setTimeout(function() {
+  window.location.href = 'index.html'; // Redirect to the main page after 10 seconds
+}, 10000); // 10 seconds
+
+
   // Add balloons to the container
   for (let i = 0; i < NUM_BALLOONS; i++) {
     const balloon = createBalloon();
