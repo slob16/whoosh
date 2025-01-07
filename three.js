@@ -25,8 +25,8 @@
 
   function loadBalloon() {
     return new Promise((resolve) => {
-      objLoader.load("path-to-your-model.obj", (object) => {
-        const texture = textureLoader.load("path-to-your-texture.jpg");
+      objLoader.load("assets/images/test/balloon.obj", (object) => {
+        const texture = textureLoader.load("assets/images/test/hab.jpg");
         object.traverse((child) => {
           if (child.isMesh) {
             child.material.map = texture;
