@@ -3,18 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loading...Whoosh</title>
+  <title>Loading...</title>
 
-    <!-- Include Three.js -->
+  <!-- Link to External CSS -->
+  <link rel="stylesheet" href="test/test.css">
+
+  <!-- Include Three.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/OBJLoader.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/TextureLoader.js"></script>
- 
-  <!-- Link to external CSS -->
-  <style>
-  <link rel="stylesheet" href="test.css">
- </style>
-  
 </head>
 <body>
 
@@ -24,18 +21,13 @@
   <div class="balloon"></div>
 
   <div class="loading-container">
-    <h1>Up Up & Away...</h1>
+    <h1>Loading...</h1>
     <p>We are almost there! Please press Enter to enter the page.</p>
     <div class="enter-msg">Press Enter to continue</div>
   </div>
 
-  <!-- External JavaScript -->
-  <script src="test.js"></script>
-
-  <!-- Enter key functionality -->
-
-   <!-- 3D Object Container -->
-  <div id="3d-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+  <!-- 3D Object Container -->
+  <div id="3d-container" class="3d-container"></div>
 
   <!-- Enter key functionality -->
   <script>
@@ -46,50 +38,7 @@
     });
   </script>
 
-  <!-- Script to handle the 3D object and animation -->
-  <script>
-    // Basic scene setup
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('3d-container').appendChild(renderer.domElement);
-
-    // Add a basic light
-    var light = new THREE.PointLight(0xFFFFFF, 1, 1000);
-    light.position.set(50, 50, 50);
-    scene.add(light);
-
-    // Load the OBJ model and the texture
-    var loader = new THREE.OBJLoader();
-    var textureLoader = new THREE.TextureLoader();
-
-    // Replace with your actual file paths
-    var texture = textureLoader.load('assets/images/test/hab.jpg'); // Replace with your JPG texture path
-
-    loader.load('assets/images/test/balloon.obj', function (obj) {
-      obj.traverse(function (child) {
-        if (child.isMesh) {
-          child.material.map = texture; // Apply texture to the 3D model
-        }
-      });
-      scene.add(obj);
-    });
-
-    // Set camera position
-    camera.position.z = 5;
-
-    // Animation function to render the scene
-    function animate() {
-      requestAnimationFrame(animate);
-      renderer.render(scene, camera);
-
-      // Optional: Add rotation or movement to the object
-      scene.rotation.y += 0.01; // Rotate the entire scene for effect
-    }
-
-    // Start animation loop
-    animate();
-  </script>
+  <!-- Link to External JavaScript -->
+  <script src="test/test.js"></script>
 </body>
 </html>
