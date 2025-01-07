@@ -7,64 +7,6 @@
   
   <!-- Link to external CSS -->
   <link rel="stylesheet" href="test.css">
-  
-  <!-- Script for balloon floating animation -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      overflow: hidden;
-      background-color: #050505;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      position: relative;
-    }
-
-    .loading-container {
-      position: absolute;
-      bottom: 50px;
-      text-align: center;
-      z-index: 10;
-    }
-
-    .enter-msg {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #d8f744;
-    }
-
-    /* Floating balloons animation */
-    .balloon {
-      position: absolute;
-      bottom: -100px; /* Start position off-screen */
-      width: 80px;
-      height: 120px;
-      background-color: #050505; /* Example balloon color */
-      border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      animation: floatUp 6s infinite ease-in-out;
-    }
-
-    .balloon:nth-child(1) {
-      background-color: #faf9f6; /* Red balloon */
-      animation-duration: 8s;
-      animation-delay: 0s;
-    }
-
-    .balloon:nth-child(2) {
-      background-color: #33FF57; /* Green balloon */
-      animation-duration: 10s;
-      animation-delay: 2s;
-    }
-
-    .balloon:nth-child(3) {
-      background-color: #3357FF; /* Blue balloon */
-      animation-duration: 7s;
-      animation-delay: 4s;
-    }
 
     /* Float Up Keyframe */
     @keyframes floatUp {
