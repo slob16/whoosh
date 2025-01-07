@@ -20,7 +20,13 @@
 </head>
 
 <body>
+	  <!-- 3D Object Container -->
+  <div id="3d-container" class="3d-container"></div>
+	
   <!-- Floating Balloons -->
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
   <div class="balloon"></div>
   <div class="balloon"></div>
   <div class="balloon"></div>
@@ -28,13 +34,8 @@
   <div class="loading-container">
     <h1>Loading...</h1>
     <p>We are almost there! Please press Enter to fly up up & away.....</p>
-    <div class="enter-msg">Press Enter to continue</div>
-    <li><a href="index.html">Enter </li>
+    <div class="enter-msg">Press <li><a href="index.html">Enter </li>to continue</div>
   </div>
-
-  <!-- 3D Object Container -->
-  <div id="3d-container" class="3d-container"></div>
-
   	<!-- Main Footer -->
 	<footer class="main-footer">
 		<div class="auto-container">
@@ -84,15 +85,6 @@
 	<!-- End Main Footer -->
 	
 </div>
-  <!-- Enter key functionality -->
-  <script>
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        window.location.href = 'index.html'; // Redirect to the main page
-      }
-    });
-  </script>
-
 <!-- End PageWrapper -->
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/popper.min.js"></script>
