@@ -33,6 +33,16 @@ body {
   animation: float-up linear infinite;
 }
 
+#threejs-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+canvas {
+  display: block;
+}
+
 /* Float Up Animation */
 @keyframes float-up {
   0% {
