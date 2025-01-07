@@ -11,12 +11,23 @@ body {
   position: relative;
 }
 
-/* Loading Screen Container */
-.loading-container {
-  position: absolute;
-  bottom: 50px;
+body {
+  background-color: black;
   text-align: center;
-  z-index: 10;
+  min-height: 400vh;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  padding-top: 100px;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: dodgerblue;
+  border-radius: 20%;
+  display: inline-block;
+  border: 1px solid black;
 }
 
 .enter-msg {
