@@ -1,45 +1,42 @@
-<script>
+// Basic scene setup
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('3d-container').appendChild(renderer.domElement);
 
-  // Configuration
-  const NUM_BALLOONS = 10; // Number of balloons
-  const balloonContainer = document.getElementById('balloon-container');
+// Add a basic light
+var light = new THREE.PointLight(0xFFFFFF, 1, 1000);
+light.position.set(50, 50, 50);
+scene.add(light);
 
-  // Function to create a balloon
-  function createBalloon() {
-    const balloon = document.createElement('div');
-    balloon.classList.add('balloon');
+// Load the OBJ model and the texture
+var loader = new THREE.OBJLoader();
+var textureLoader = new THREE.TextureLoader();
 
-    // Randomize position and animation duration
-    const randomLeft = Math.random() * 100; // Random left position (percentage)
-    const randomDuration = Math.random() * 5 + 5; // Random duration between 5s and 10s
-    const randomDelay = Math.random() * 3; // Random delay between 0s and 3s
+// Replace with your actual file paths
+var texture = textureLoader.load('assets/images/test/hab.jpg'); // Path to your JPG texture
 
-    // Apply styles
-    balloon.style.left = `${randomLeft}%`;
-    balloon.style.animationDuration = `${randomDuration}s`;
-    balloon.style.animationDelay = `${randomDelay}s`;
-
-    return balloon;
-  }
-
-// script.js
-
-// Listen for the Enter key press to redirect to index.html
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    window.location.href = 'index.html'; // Redirect to the main page
-  }
+loader.load('assets/images/test/balloon.obj', function (obj) {
+  obj.traverse(function (child) {
+    if (child.isMesh) {
+      child.material.map = texture; // Apply texture to the 3D model
+    }
+  });
+  scene.add(obj);
 });
 
+// Set camera position
+camera.position.z = 5;
 
-setTimeout(function() {
-  window.location.href = 'index.html'; // Redirect to the main page after 10 seconds
-}, 10000); // 10 seconds
+// Animation function to render the scene
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
 
+  // Optional: Add rotation or movement to the object
+  scene.rotation.y += 0.01; // Rotate the entire scene for effect
+}
 
-  // Add balloons to the container
-  for (let i = 0; i < NUM_BALLOONS; i++) {
-    const balloon = createBalloon();
-    balloonContainer.appendChild(balloon);
-  }
-</script>
+// Start animation loop
+animate();
