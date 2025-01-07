@@ -1,0 +1,49 @@
+/* General Styling */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+.banner-one {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auto-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Balloon Styling */
+.balloon {
+  position: absolute;
+  width: 100px; /* Size of the balloon */
+  height: 150px;
+  background: url('path-to-your-hot-air-balloon-image.png') no-repeat center;
+  background-size: contain;
+  animation: float-up linear infinite;
+}
+
+/* Float Up Animation */
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh); /* Start off-screen */
+    opacity: 0; /* Fade in */
+  }
+  10% {
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    transform: translateY(-200px); /* End off-screen */
+    opacity: 0; /* Fade out */
+  }
+}
