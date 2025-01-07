@@ -1,4 +1,9 @@
 <script>
+
+  setTimeout(function() {
+  window.location.href = 'index.html'; // Redirect to the main page after 10 seconds
+}, 10000); // 10 seconds
+
   // Configuration
   const NUM_BALLOONS = 10; // Number of balloons
   const balloonContainer = document.getElementById('balloon-container');
