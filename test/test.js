@@ -15,10 +15,10 @@ var loader = new THREE.OBJLoader();
 var textureLoader = new THREE.TextureLoader();
 
 // Path to your texture file (JPG)
-var texture = textureLoader.load('assets/images/your-texture.jpg'); // Ensure correct path
+var texture = textureLoader.load('assets/images/test/wtf.png'); // Ensure correct path
 
 // Load your OBJ model
-loader.load('models/your-model.obj', function (obj) {
+loader.load('assets/images/test/model/balloon.obj', function (obj) {
   obj.traverse(function (child) {
     if (child.isMesh) {
       child.material.map = texture; // Apply texture to the 3D model
